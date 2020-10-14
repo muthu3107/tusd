@@ -43,6 +43,8 @@ var Flags struct {
 	TLSCertFile             string
 	TLSKeyFile              string
 	TLSMode                 string
+	MINCHUNKSIZE            int64
+	MAXCHUNKSIZE            int64
 }
 
 func ParseFlags() {
@@ -79,6 +81,8 @@ func ParseFlags() {
 	flag.StringVar(&Flags.TLSCertFile, "tls-certificate", "", "Path to the file containing the x509 TLS certificate to be used. The file should also contain any intermediate certificates and the CA certificate.")
 	flag.StringVar(&Flags.TLSKeyFile, "tls-key", "", "Path to the file containing the key for the TLS certificate.")
 	flag.StringVar(&Flags.TLSMode, "tls-mode", "tls12", "Specify which TLS mode to use; valid modes are tls13, tls12, and tls12-strong.")
+	flag.Int64Var(&Flags.MINCHUNKSIZE, "min_chunk_size", 22048, "Default MINCHUNK Size config")
+	flag.Int64Var(&Flags.MAXCHUNKSIZE, "max_chunk_size", 5242880, "Default MAXCHUNK Size config")
 	flag.Parse()
 
 	SetEnabledHooks()

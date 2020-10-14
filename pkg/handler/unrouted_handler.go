@@ -367,6 +367,10 @@ func (handler *UnroutedHandler) PostFile(w http.ResponseWriter, r *http.Request)
 	url := handler.absFileURL(r, id)
 	w.Header().Set("Location", url)
 
+	//also settting min and max chunk size in headers
+	w.Header().Set("MinChunkSize", i64toa(handler.config.MinChunkSize))
+	w.Header().Set("MaxChunkSize", i64toa(handler.config.MaxChunkSize))
+
 	handler.Metrics.incUploadsCreated()
 	handler.log("UploadCreated", "id", id, "size", i64toa(size), "url", url)
 

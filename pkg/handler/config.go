@@ -49,6 +49,9 @@ type Config struct {
 	// a response is returned to the client. Error responses from the callback will be passed
 	// back to the client. This can be used to implement post-processing validation.
 	PreFinishResponseCallback func(hook HookEvent) error
+	//Min and Max ChunkSize Configuration vars when dynamic chunk size is being calculated
+	MinChunkSize int64
+	MaxChunkSize int64
 }
 
 func (config *Config) validate() error {

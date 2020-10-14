@@ -32,6 +32,8 @@ func Serve() {
 		NotifyTerminatedUploads: true,
 		NotifyUploadProgress:    true,
 		NotifyCreatedUploads:    true,
+		MinChunkSize:            Flags.MINCHUNKSIZE,
+		MaxChunkSize:            Flags.MAXCHUNKSIZE,
 	}
 
 	if err := SetupPreHooks(&config); err != nil {
